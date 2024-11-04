@@ -1,5 +1,7 @@
 from flask import Flask, render_template
 
+from flask import Flask
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -30,6 +32,8 @@ def JAVA():
 def Python():
     return render_template('prog com py.html')
 
+def home():
+    return "Olá, Mundo!"
 
 if __name__ == '__main__':
     app.run(debug=True)
