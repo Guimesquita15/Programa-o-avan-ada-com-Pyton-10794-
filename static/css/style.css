@@ -95,3 +95,114 @@
     display: block;
 }
 
+
+
+
+/* Contêiner principal para centralizar na tela */
+.container-principal {
+    display: flex;
+    justify-content: flex-end; /* Move o contêiner para a direita */
+    margin: 0 auto; /* Centraliza o contêiner principal na página */
+    max-width: 1200px; /* Largura máxima da área de conteúdo */
+}
+
+/* Estilo do conteúdo dentro do contêiner */
+.container {
+    max-width: 600px; /* Largura do contêiner interno */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+/* Estilos adicionais */
+h1, h2 {
+    color: #333;
+}
+
+p, ul, li {
+    color: #555;
+    line-height: 1.6;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+code {
+    background-color: #e8e8e8;
+    padding: 3px 5px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+
+/* Contêiner principal para centralizar o conteúdo */
+
+
+
+/* Contêiner principal para centralizar o conteúdo */
+.container-principal {
+    display: flex;
+    justify-content: flex-end; /* Alinha o contêiner à direita */
+    margin: 0 auto; /* Centraliza o contêiner principal na página */
+    max-width: 1200px; /* Largura máxima da área de conteúdo */
+}
+
+/* Estilo do conteúdo dentro do contêiner */
+.container {
+    max-width: 800px; /* Largura do contêiner interno */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Alinha o texto à esquerda */
+
+    /* Fazendo o contêiner ter um scroll interno se o conteúdo exceder a altura */
+    max-height: 600px; /* Limita a altura do contêiner */
+    overflow-y: auto; /* Permite o scroll vertical */
+}
+
+/* Estilos gerais para os títulos */
+h3 {
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #444;
+    font-size: 1.6em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+/* Estilos para o texto */
+p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+/* Estilo para a lista */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Estilo para o código */
+code {
+    background-color: #e8e8e8;
+    padding: 3px 5px;
+    border-radius: 4px;
+    font-family: monospace;
+}
