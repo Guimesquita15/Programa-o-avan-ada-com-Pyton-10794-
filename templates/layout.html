@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Meu Projeto{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block styles %}
+            <!-- Bootstrap CSS -->
+            <link rel="stylesheet" type="text/css"
+            href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+        {% endblock %}
+</head>
+<body>
+    <header>
+        <h1>Menu</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li><a href="/modulos">Módulos</a></li>
+                <li><a href="/seguranca">Segurança</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

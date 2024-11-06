@@ -1,97 +1,97 @@
-html, body {
-    height: 100%;
-    margin: 5px;
-    padding: 0;  
-    display: flex;
-    flex-direction: column; /* Faz com que os elementos sejam empilhados verticalmente */
-}
-
-body {
-    min-height: 100vh;
-    background-image: url('../images/fundo.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: white;
-    overflow: hidden;
-}
-
-header {
-    text-shadow: 4px 4px 4px rgba(113, 168, 241, 0.781);
-    font-size: 23px;
-    margin-bottom: 20px; /* Espaço abaixo do cabeçalho */
-}
-
-nav {
-    background-color: rgba(113, 168, 241, 0);
-    padding: 10px 0;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;   
-}
-
-nav ul li {
-    margin: 0 10px;
-}
-
-nav ul li a, nav a {
-    color: #fff;
-    text-decoration: none;
-}
-
-nav ul li a:hover, nav a:hover {
-    text-decoration: underline;
-}
-
-.container-PI {
-    position: relative;
-    margin-top: 20px; /* Espaço acima do container */
-    height: 250px;
-    width: 300px;
-    padding: 20px;
-    background-color: rgba(152, 194, 248, 0.185);
-    border-radius: 600px;
-    box-shadow: 0 0 10px rgba(113, 169, 241, 0.685);
+/* Centralização e estilo do botão na página inicial */
+.intro-container {
     text-align: center;
+    margin-top: 100px;
 }
 
-.container {
-    max-width: 700px;
-    height: 600px;
-    padding: 20px;
-    background-color: rgba(152, 194, 248, 0.185);
-    border-radius: 30px;
-    box-shadow: 0 0 10px rgba(113, 169, 241, 0.685);
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-.container::-webkit-scrollbar {
+.button:hover {
+    background-color: #45a049;
+}
+
+/* Estilização das abas dos tópicos */
+.tab-container label {
+    display: inline-block;
+    padding: 10px;
+    margin-right: 5px;
+    background-color: #ddd;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+}
+
+.tab-container input[type="radio"] {
     display: none;
 }
 
-.container-content {
-    margin: 40px;
+/* Conteúdo das abas */
+.tab-content {
+    display: none;  /* Todos os conteúdos estão escondidos por padrão */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 0 5px 5px 5px;
+    background-color: #f9f9f9;
 }
 
-/* Estilos para scrollbar */
-.container::-webkit-scrollbar {
-    width: 10px;
+/* Exibe o conteúdo da aba ativa */
+#topic1:checked ~ #content1,
+#topic2:checked ~ #content2,
+#topic3:checked ~ #content3,
+#topic4:checked ~ #content4,
+#topic5:checked ~ #content5,
+#topic6:checked ~ #content6 {
+    display: block;  /* Apenas o conteúdo correspondente ao radio button marcado será exibido */
 }
 
-.container::-webkit-scrollbar-track {
-    background: #f1f1f1;
+/* Destaque para a aba ativa */
+.tab-container input[type="radio"]:checked + label {
+    background-color: #bbb;
+    font-weight: bold;
 }
 
-.container::-webkit-scrollbar-thumb {
-    background: #888;
+/* Ocultar checkboxes */
+.toggle-checkbox {
+    display: none;
+}
+
+/* Estilo dos botões de toggle (labels) */
+.toggle-label {
+    display: block;
+    padding: 8px 12px;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
     border-radius: 5px;
 }
 
-.container::-webkit-scrollbar-thumb:hover {
-    background: #555;
+.toggle-label:hover {
+    background-color: #45a049;
 }
+
+/* Conteúdo dos subtemas, inicialmente oculto */
+.subtopic-content {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Mostrar conteúdo do subtema quando o checkbox correspondente está marcado */
+#toggle1:checked ~ .subtopic-content:nth-of-type(1),
+#toggle2:checked ~ .subtopic-content:nth-of-type(2),
+#toggle3:checked ~ .subtopic-content:nth-of-type(3), 
+#toggle4:checked ~ .subtopic-content:nth-of-type(4) {
+    display: block;
+}
+

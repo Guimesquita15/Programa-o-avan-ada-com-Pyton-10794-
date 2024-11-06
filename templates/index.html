@@ -1,26 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trabalho</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Trabalho Escolar - Página Inicial</title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Módulos</h1>
-    </header>
-    <nav>
-        <ul class="container-PI">
-            <p><li><a href="{{ url_for('administracao_redes_locais') }}">Administração de Redes Locais</a></li></p>
-            <p><li><a href="{{ url_for('processamento_computacional') }}">Processamento Computacional</a></li></p>
-            <p><li><a href="{{ url_for('c_e_cplusplus') }}">Programação em c e c++ avançada</a></li></p>
-            <p><li><a href="{{ url_for('administracao_de_bd') }}">Administração de base de dados</a></li></p>
-            <p><li><a href="{{ url_for('prog_com_java') }}">Programação de sistemas distribuídos-JAVA</a></li></p>
-            <p><li><a href="{{ url_for('prog_com_py') }}">Programação avançada com Python</a></li></p>
-        </ul>
-    </nav>
-    
-   
+    <div class="intro-container">
+        <h1>Bem-vindo ao Trabalho Escolar</h1>
+        <p>Neste trabalho conseguimos ver um pouco sobre os módulos que iremos estudar este ano.</p>
+        <a href="/modulos" class="button">Módulos</a>
+        <a href="/seguranca" class="button">Segurança</a>
+    </div>
 </body>
 </html>
+
