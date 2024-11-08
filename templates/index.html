@@ -8,24 +8,18 @@
 </head>
 
 <body>
-
-    <body>
-        <div>
-           <div class="wave"></div>
-           <div class="wave"></div>
-           <div class="wave"></div>
-        </div>
-      </body>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
     
     <div class="content">
         <h1>Bem-vindo ao Trabalho Escolar</h1>
         <div class="intro-container">
-            <a href="/modulos" class="button">Módulos</a>
-            <a href="/seguranca" class="button">Segurança</a>
+            <a href="{{ url_for('modulos') }}" class="button">Módulos</a>
+            <a href="{{ url_for('seguranca') }}" class="button">Segurança</a>
         </div>
-        <div class="bg"></div>
     </div>
-   </div>
 </body>
 
 </html>

@@ -1,29 +1,34 @@
 {% extends "layout.html" %}
 
-{% block title %}Segurança nos websites{% endblock %}
+{% block title %}Segurança{% endblock %}
 
 {% block content %}
-<!-- O conteúdo da página começa aqui, dentro do bloco content -->
-<div class="container-principal">
-    <div class="container">
-        <h1>Headers de Segurança</h1>
-        <p>Os headers de segurança são como pequenas "instruções de segurança" que o servidor envia ao navegador para manter
-            a página segura. <br>Eles dizem ao navegador o que ele pode ou não pode fazer com o conteúdo da página. É como se o
-            servidor dissesse: "Aqui estão algumas regras de segurança que deves seguir"</p>
+    <!-- Adicionar as waves aqui, antes do conteúdo -->
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
 
-        <h2>Por que são importantes?</h2>
-        <p>Esses headers ajudam a bloquear certos tipos de ataques. Por exemplo:</p>
-        <ul>
-            <li>Eles impedem que arquivos enganem o navegador para se passar por outro tipo de arquivo (como tentar fazer um
-                arquivo de texto agir como um código malicioso).</li>
-            <li>Eles evitam que o navegador carregue conteúdo de sites desconhecidos, o que pode ser perigoso.</li>
-        </ul>
-
-        <h2>Como o Flask ajuda?</h2>
-        <p>No Flask, nós podemos configurar esses headers de segurança. Um exemplo é o header
-            <code>X-Content-Type-Options: nosniff</code>. Esse header impede que o navegador tente "adivinhar" o que é um
-            arquivo. Isso é útil, porque, se o navegador "adivinha" errado, um arquivo inofensivo pode acabar sendo interpretado de forma maliciosa.</p>
+    <!-- Seu conteúdo existente -->
+    <div class="container-principal">
+        <div class="container">
+            <h1>Headers de Segurança</h1>
+            <p>Os headers de segurança são como pequenas "instruções de segurança" que o servidor envia ao navegador para manter
+                a página segura. <br>Eles dizem ao navegador o que ele pode ou não pode fazer com o conteúdo da página. É como se o
+                servidor dissesse: "Aqui estão algumas regras de segurança que deves seguir"</p>
+<br><br>
+            <h2>Por que são importantes?</h2>
+            <p>Esses headers ajudam a bloquear certos tipos de ataques. Por exemplo:</p>
+            <ul>
+                <li>Eles impedem que arquivos enganem o navegador para se passar por outro tipo de arquivo (como tentar fazer um
+                    arquivo de texto agir como um código malicioso).</li>
+                <li>Eles evitam que o navegador carregue conteúdo de sites desconhecidos, o que pode ser perigoso.</li>
+            </ul>
+            <br><br>
+            <h2>Como o Flask ajuda?</h2>
+            <p>No Flask, nós podemos configurar esses headers de segurança. Um exemplo é o header
+                <code>X-Content-Type-Options: nosniff</code>. Esse header impede que o navegador tente "adivinhar" o que é um
+                arquivo. Isso é útil, porque, se o navegador "adivinha" errado, um arquivo inofensivo pode acabar sendo interpretado de forma maliciosa.</p>
+        </div>
     </div>
-</div>
 {% endblock %}
-dfgh
