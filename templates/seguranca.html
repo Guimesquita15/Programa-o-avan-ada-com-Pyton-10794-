@@ -1,17 +1,24 @@
 {% extends "layout.html" %}
 
-{% block title %}Segurança{% endblock %}
+
+{% block title %}Segurança nos Websites{% endblock %}
 
 {% block content %}
-    <!-- Adicionar as waves aqui, antes do conteúdo -->
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
 
-    <!-- Seu conteúdo existente -->
-    <div class="container-principal">
-        <div class="container">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<!-- Waves do background -->
+<div class="wave"></div>
+<div class="wave"></div>
+<div class="wave"></div>
+<div class="wave"></div>
+
+<!-- Conteúdo principal -->
+<div class="container-principal">
+    <div class="container">
+        <div class="seguranca-content">
+
             <h1>Headers de Segurança</h1>
             <p>Os headers de segurança são como pequenas "instruções de segurança" que o servidor envia ao navegador para manter
                 a página segura. <br>Eles dizem ao navegador o que ele pode ou não pode fazer com o conteúdo da página. É como se o
@@ -29,6 +36,76 @@
             <p>No Flask, nós podemos configurar esses headers de segurança. Um exemplo é o header
                 <code>X-Content-Type-Options: nosniff</code>. Esse header impede que o navegador tente "adivinhar" o que é um
                 arquivo. Isso é útil, porque, se o navegador "adivinha" errado, um arquivo inofensivo pode acabar sendo interpretado de forma maliciosa.</p>
+<br><br><br>
+            <h1>Segurança nos Websites</h1>
+            <br><h2>Proteção contra CSRF (Cross-Site Request Forgery)</h2>
+            <br><h3>A proteção contra CSRF (Cross-Site Request Forgery) é fundamental para garantir que a aplicação Flask execute apenas as ações autorizadas pelo usuário. Vamos explorar esse conceito em detalhes:</h3>
+            <br><br>
+            <h2>O que é CSRF?</h2>
+            <h3>CSRF é um tipo de ataque em que um usuário autenticado em uma aplicação é induzido, sem perceber, a realizar uma ação indesejada. Isso geralmente acontece quando um site mal-intencionado envia uma solicitação disfarçada para outra aplicação em que o usuário já está logado.</h3>
+            <ul>
+                <br><li>Suponha que você está logado no site do seu banco.</li>
+                <br><li>Enquanto navega na internet, você visita um site malicioso que contém um código escondido.</li>
+                <br><li>Esse código pode enviar uma solicitação para o site do banco, fazendo uma transferência ou outra ação indesejada, usando sua sessão autenticada.</li>
+            </ul>
+
+            <h3>Como o navegador do usuário já está autenticado na aplicação, a solicitação é feita com as credenciais do usuário e é aceita como válida pelo servidor, a menos que exista proteção contra CSRF.</h3>
+            <br><br>
+            <h2>Como funciona a proteção contra CSRF?</h2>
+            <h3>A principal estratégia para prevenir ataques CSRF é o uso de tokens CSRF. Um token CSRF é um valor único, temporário e difícil de adivinhar, gerado pela aplicação para cada sessão ou cada formulário. Esse token é incluído na página e enviado junto com qualquer solicitação de alteração de dados (POST, PUT, DELETE).</h3>
+            <ol>
+                <br> <li><strong>Geração do token:</strong> Quando o usuário acessa uma página com um formulário (como a de transferência bancária), o Flask gera um token CSRF específico para aquela sessão ou formulário e o inclui na página.</li>
+                <br><li><strong>Envio do token:</strong> Quando o usuário envia o formulário, esse token é incluído na solicitação, seja como um campo oculto ou em um cabeçalho especial.</li>
+                <br> <li><strong>Validação do token:</strong> No servidor, o Flask verifica se o token CSRF recebido corresponde ao token da sessão do usuário. Se o token estiver ausente, inválido ou incorreto, a solicitação é bloqueada.</li>
+            </ol>
+            <br><br>
+            <h2>Por que o CSRF é importante?</h2>
+            <h3>A proteção contra CSRF é crucial para impedir que usuários realizem ações sem perceber. Em aplicações que exigem login, como redes sociais, bancos e lojas online, ataques CSRF podem resultar em:</h3>
+            <ul>
+                <br> <li>Transferências financeiras não autorizadas</li>
+                <br><li>Alteração de informações pessoais</li>
+                <br> <li>Realização de compras não autorizadas</li>
+            </ul>
+            <br><br>
+            <h2>Como utilizar:</h2>
+            <h3><strong>Passo 1: Instalar a extensão Flask-WTF</strong></h3><br>
+            <img src="{{ url_for('static', filename='images/instalar_Flask-WTF.png') }}" width="600">
+            <br><br>
+            <h3><strong>Passo 2: Configurar o CSRF na aplicação</strong></h3><br>
+            <img src="{{ url_for('static', filename='images/Configurar_CRSF.png') }}" width="600">
+            <br><br>
+            <h3><strong>Passo 3: Usar o token CSRF no formulário</strong><br> No template HTML (Jinja2), o token CSRF é automaticamente gerado e inserido. Para isso, basta renderizar o formulário, e o Flask-WTF cuida do resto:</h3>
+            <br><img src="{{ url_for('static', filename='images/token_CRSF.png') }}" width="600">
+            <br><br>
+            <h3><strong>Passo 4: Validar o token CSRF no servidor</strong><br> Quando o formulário é submetido, o Flask-WTF verifica o token CSRF. Se o token estiver incorreto, o servidor rejeitará a solicitação, impedindo o ataque CSRF.</h3>
+        </div>
+
+        <!-- Formulário -->
+        <div class="form-section"><br><br>
+            <h2>Formulário de Segurança</h2>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <div class="form-container">
+                <form method="POST">
+                    {{ form.csrf_token }}
+                    <div class="form-group">
+                        {{ form.nome.label }}
+                        {{ form.nome(class="form-control") }}
+                    </div>
+                    {{ form.submit(class="btn btn-primary") }}
+                </form>
+            </div>
         </div>
     </div>
-{% endblock %}
+</div>
+
+{% endblock %}
